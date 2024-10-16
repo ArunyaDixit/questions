@@ -1,31 +1,33 @@
-#include <stdio.h>
-
-void convertDecimal(int decimal_value) {
-    printf("Decimal: %d\n", decimal_value);
-    
-    // Convert to binary
-    printf("Binary: ");
-    for (int i = 31; i >= 0; i--) {
-        int bit = (decimal_value >> i) & 1;
-        printf("%d", bit);
+void decToBinary(int n) {
+    int binaryNum[32]; // array to store binary number
+    int i = 0;
+    while (n > 0) {
+        binaryNum[i] = n % 2; // store remainder (0 or 1)
+        n = n / 2; // divide by 2
+        i++;
     }
-    printf("\n");
-    
-    // Convert to octal
-    printf("Octal: %o\n", decimal_value);
-    
-    // Convert to hexadecimal
-    printf("Hexadecimal: %X\n", decimal_value);
+    // print binary array in reverse order
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", binaryNum[j]);
+    }
 }
 
 int main() {
-    int decimal_value;
+    int n;
     
     // Input from the user
     printf("Enter a decimal number: ");
-    scanf("%d", &decimal_value);
+    scanf("%d", &n);
     
-    convertDecimal(decimal_value);
+       // Convert to octal
+    printf("Octal: %o\n", n);
     
-   return 0; 
+    // Convert to hexadecimal
+    printf("Hexadecimal: %X\n", n);
+    
+   // Conversion to binary
+   	printf("Binary: \n");
+   	decToBinary(n);
+   	
+   	
 }
